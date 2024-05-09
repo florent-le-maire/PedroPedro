@@ -1,10 +1,11 @@
 using Godot;
-using System;
+
+namespace PedroBulletV2.Scripts;
 
 public partial class GameManager : Node
 {
     [Export] private HealthBar _healthBar;
-    [Export] private Player _player;
+    [Export] private Player.Player _player;
     
     public override void _Ready()
     {

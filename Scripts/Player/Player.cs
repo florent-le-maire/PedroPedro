@@ -1,5 +1,6 @@
 using Godot;
-using System;
+
+namespace PedroBulletV2.Scripts.Player;
 
 public partial class Player : CharacterBody2D
 {

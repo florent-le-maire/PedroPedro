@@ -3,7 +3,9 @@ using System;
 
 public partial class State : Node
 {
-    public delegate void Transitioned();
+    [Signal]
+    public delegate void TransitionedEventHandler(State state, State newStateName);
+
     public void Enter()
     {
     }

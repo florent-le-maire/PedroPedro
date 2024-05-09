@@ -1,10 +1,14 @@
 using Godot;
-using System;
+using Godot.Collections;
 
-public partial class StateMachine : State
+namespace PedroBulletV2.Scripts.States;
+
+public partial class StateMachine : Node
 {
-    // private Dictionary<string, State> _states;
-    private State _currentState = null;
+    private Dictionary<string, State> _states;
+    private State _currentState;
+
+    [Export] private State _initialState;
 
     public override void _Ready()
     {
@@ -12,9 +16,16 @@ public partial class StateMachine : State
         {
             if (child is State s)
             {
-                // _states[child.Name] = s;
-                // s.Transitioned = on_child_transition;
+                string childName = child.Name;
+                _states[childName.ToLower()] = s;
+                s.Transitioned += on_child_transition;
             }
+        }
+
+        if (_initialState != null)
+        {
+            _initialState.Enter();
+            _currentState = _initialState;
         }
     }
 
@@ -36,6 +47,23 @@ public partial class StateMachine : State
 
     void on_child_transition(State state, State newStateName)
     {
-        
+        if (state != _currentState)
+        {
+            return;
+        }
+
+        string stateName = newStateName.Name;
+        if (!_states.TryGetValue(stateName.ToLower(), out State newState))
+        {
+            return;
+        }
+
+        if (_currentState != null)
+        {
+            _currentState.Exit();
+        }
+
+        newState.Enter();
+        _currentState = newState;
     }
 }

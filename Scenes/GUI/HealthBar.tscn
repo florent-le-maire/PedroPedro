@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bx8qauivkstee"]
+
+[ext_resource type="Script" path="res://Scripts/GUI/HealthBar.cs" id="1_4qxv0"]
+[ext_resource type="PackedScene" uid="uid://cgcpneoi73wji" path="res://Scenes/GUI/Heart.tscn" id="2_8dnfo"]
+
+[node name="HealthBar" type="HBoxContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_4qxv0")
+_heart = ExtResource("2_8dnfo")

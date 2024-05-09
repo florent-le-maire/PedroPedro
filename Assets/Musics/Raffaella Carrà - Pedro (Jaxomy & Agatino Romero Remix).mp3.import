@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bxddn1ljco6rd"
+path="res://.godot/imported/Raffaella Carrà - Pedro (Jaxomy & Agatino Romero Remix).mp3-89c2922b695773968bb1720cd63249db.mp3str"
+
+[deps]
+
+source_file="res://Assets/Musics/Raffaella Carrà - Pedro (Jaxomy & Agatino Romero Remix).mp3"
+dest_files=["res://.godot/imported/Raffaella Carrà - Pedro (Jaxomy & Agatino Romero Remix).mp3-89c2922b695773968bb1720cd63249db.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

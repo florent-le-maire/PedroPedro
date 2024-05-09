@@ -1,0 +1,37 @@
+[gd_scene load_steps=7 format=3 uid="uid://gsdd437qs6df"]
+
+[ext_resource type="Script" path="res://Scripts/Enemies/Pedro.cs" id="1_80g20"]
+[ext_resource type="Texture2D" uid="uid://cdqnbops4a2t7" path="res://Assets/Sprites/knight.png" id="1_kcu4k"]
+[ext_resource type="PackedScene" uid="uid://vc5p0mjfcjf" path="res://Scenes/Bullet.tscn" id="2_8d0il"]
+[ext_resource type="Script" path="res://Scripts/States/StateMachine.cs" id="4_uex6x"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q4f8r"]
+atlas = ExtResource("1_kcu4k")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3psq4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q4f8r")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Pedro" type="Node2D"]
+script = ExtResource("1_80g20")
+_bulletScene = ExtResource("2_8d0il")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_3psq4")
+
+[node name="Rotator" type="Node2D" parent="."]
+
+[node name="ShootTimer" type="Timer" parent="."]
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("4_uex6x")
+
+[connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]

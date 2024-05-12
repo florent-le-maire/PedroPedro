@@ -8,24 +8,30 @@ public partial class StateMachine : Node
     private Dictionary<string, State> _states;
     private State _currentState;
 
-    [Export] private State _initialState;
+    [Export] private NodePath _initialState;
 
     public override void _Ready()
     {
+        _states = new Dictionary<string, State>();
+        
+
         foreach (var child in GetChildren())
         {
             if (child is State s)
             {
                 string childName = child.Name;
-                _states[childName.ToLower()] = s;
-                s.Transitioned += on_child_transition;
+                _states.Add(childName.ToLower(),s);
+                s.Fsm = this;
+                s.Ready();
+                s.Exit(); // Reset all states
+                s.Transitioned += TransitionTo;
             }
         }
-
+        
         if (_initialState != null)
         {
-            _initialState.Enter();
-            _currentState = _initialState;
+            _currentState = GetNode<State>(_initialState);
+            _currentState.Enter();
         }
     }
 
@@ -45,25 +51,34 @@ public partial class StateMachine : Node
         }
     }
 
-    void on_child_transition(State state, State newStateName)
+    public void TransitionTo(string key)
     {
-        if (state != _currentState)
-        {
+        if(!_states.ContainsKey(key) || _currentState == _states[key])
             return;
-        }
-
-        string stateName = newStateName.Name;
-        if (!_states.TryGetValue(stateName.ToLower(), out State newState))
-        {
-            return;
-        }
-
-        if (_currentState != null)
-        {
-            _currentState.Exit();
-        }
-
-        newState.Enter();
-        _currentState = newState;
+        _currentState.Exit();
+        _currentState = _states[key];
+        _currentState.Enter();
     }
+
+    // void on_child_transition(State state, State newStateName)
+    // {
+    //     if (state != _currentState)
+    //     {
+    //         return;
+    //     }
+    //
+    //     string stateName = newStateName.Name;
+    //     if (!_states.TryGetValue(stateName.ToLower(), out State newState))
+    //     {
+    //         return;
+    //     }
+    //
+    //     if (_currentState != null)
+    //     {
+    //         _currentState.Exit();
+    //     }
+    //
+    //     newState.Enter();
+    //     _currentState = newState;
+    // }
 }

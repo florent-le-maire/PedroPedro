@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://gsdd437qs6df"]
+[gd_scene load_steps=8 format=3 uid="uid://gsdd437qs6df"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/Pedro.cs" id="1_80g20"]
 [ext_resource type="Texture2D" uid="uid://cdqnbops4a2t7" path="res://Assets/Sprites/knight.png" id="1_kcu4k"]
 [ext_resource type="PackedScene" uid="uid://vc5p0mjfcjf" path="res://Scenes/Bullet.tscn" id="2_8d0il"]
 [ext_resource type="Script" path="res://Scripts/States/StateMachine.cs" id="4_uex6x"]
+[ext_resource type="Script" path="res://Scripts/States/EnemyIdle.cs" id="5_tj8sp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q4f8r"]
 atlas = ExtResource("1_kcu4k")
@@ -33,5 +34,8 @@ sprite_frames = SubResource("SpriteFrames_3psq4")
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("4_uex6x")
+
+[node name="EnemyIdle" type="Node" parent="StateMachine"]
+script = ExtResource("5_tj8sp")
 
 [connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]

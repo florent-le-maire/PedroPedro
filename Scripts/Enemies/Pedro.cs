@@ -2,7 +2,7 @@ using Godot;
 
 namespace PedroBulletV2.Scripts.Enemies;
 
-public partial class Pedro : Node2D
+public partial class Pedro : CharacterBody2D
 {
 	[Export] private PackedScene _bulletScene;
 	private Timer _shootTimer;
@@ -38,6 +38,10 @@ public partial class Pedro : Node2D
 		var newRotation = _rotator.RotationDegrees + _rotateSpeed * delta;
 		_rotator.RotationDegrees = (float)newRotation % 360;
 
+	}
+	public override void _PhysicsProcess(double delta)
+	{
+		MoveAndSlide();
 	}
 
 	void _on_shoot_timer_timeout()

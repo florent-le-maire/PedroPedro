@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/GameManager.cs" id="1_5meam"]
 [ext_resource type="PackedScene" uid="uid://dwrhqajdb6jxe" path="res://Scenes/Player.tscn" id="1_xooaa"]
-[ext_resource type="PackedScene" uid="uid://gsdd437qs6df" path="res://Scenes/Pedro.tscn" id="2_w28eg"]
+[ext_resource type="PackedScene" uid="uid://b8sv50s64rque" path="res://Scenes/PedroV2.tscn" id="2_2tmoi"]
 [ext_resource type="PackedScene" uid="uid://bx8qauivkstee" path="res://Scenes/GUI/HealthBar.tscn" id="3_nrswk"]
 [ext_resource type="AudioStream" uid="uid://bxddn1ljco6rd" path="res://Assets/Musics/Raffaella Carrà - Pedro (Jaxomy & Agatino Romero Remix).mp3" id="5_cmbgc"]
 
@@ -15,8 +15,8 @@ offset_bottom = 654.0
 [node name="Player" parent="." instance=ExtResource("1_xooaa")]
 position = Vector2(612, 395)
 
-[node name="Pedro" parent="." instance=ExtResource("2_w28eg")]
-position = Vector2(577, 64)
+[node name="PedroV2" parent="." instance=ExtResource("2_2tmoi")]
+position = Vector2(585, 53)
 
 [node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("_healthBar", "_player")]
 script = ExtResource("1_5meam")

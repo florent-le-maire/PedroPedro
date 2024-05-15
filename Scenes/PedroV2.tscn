@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://b8sv50s64rque"]
+[gd_scene load_steps=10 format=3 uid="uid://b8sv50s64rque"]
 
 [ext_resource type="Texture2D" uid="uid://cdqnbops4a2t7" path="res://Assets/Sprites/knight.png" id="1_5vc3e"]
 [ext_resource type="Script" path="res://Scripts/Enemies/Pedro.cs" id="1_n2swe"]
 [ext_resource type="PackedScene" uid="uid://vc5p0mjfcjf" path="res://Scenes/Bullet.tscn" id="2_vah1w"]
 [ext_resource type="Script" path="res://Scripts/States/StateMachine.cs" id="2_wmv8j"]
 [ext_resource type="Script" path="res://Scripts/States/EnemyIdle.cs" id="3_c20td"]
+[ext_resource type="Script" path="res://Scenes/EnemyCircleAttack.cs" id="6_7tswa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5mblk"]
 size = Vector2(13, 18)
@@ -46,5 +47,8 @@ _initialState = NodePath("EnemyIdle")
 [node name="EnemyIdle" type="Node" parent="StateMachine" node_paths=PackedStringArray("_enemy")]
 script = ExtResource("3_c20td")
 _enemy = NodePath("../..")
+
+[node name="EnemyCircleAttack" type="Node" parent="StateMachine"]
+script = ExtResource("6_7tswa")
 
 [connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]

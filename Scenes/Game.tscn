@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://dkei3xhqdbukt"]
+[gd_scene load_steps=8 format=3 uid="uid://dkei3xhqdbukt"]
 
 [ext_resource type="Script" path="res://Scripts/GameManager.cs" id="1_5meam"]
+[ext_resource type="PackedScene" uid="uid://dhw4saqdsfgg5" path="res://Scenes/OptionsMenu/WindowModeButton.tscn" id="1_5ntg8"]
 [ext_resource type="PackedScene" uid="uid://dwrhqajdb6jxe" path="res://Scenes/Player.tscn" id="1_xooaa"]
 [ext_resource type="PackedScene" uid="uid://b8sv50s64rque" path="res://Scenes/PedroV2.tscn" id="2_2tmoi"]
 [ext_resource type="PackedScene" uid="uid://bx8qauivkstee" path="res://Scenes/GUI/HealthBar.tscn" id="3_nrswk"]
 [ext_resource type="AudioStream" uid="uid://bxddn1ljco6rd" path="res://Assets/Musics/Raffaella Carrà - Pedro (Jaxomy & Agatino Romero Remix).mp3" id="5_cmbgc"]
+[ext_resource type="PackedScene" uid="uid://bck6fvg07uxp3" path="res://Scenes/OptionsMenu/ResolutionModeButton.tscn" id="7_g8kuc"]
 
 [node name="Game" type="Node2D"]
 
@@ -30,3 +32,15 @@ _player = NodePath("../Player")
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_cmbgc")
 autoplay = true
+
+[node name="WindowModeButton" parent="." instance=ExtResource("1_5ntg8")]
+offset_left = 104.0
+offset_top = 187.0
+offset_right = 104.0
+offset_bottom = 187.0
+
+[node name="ResolutionModeButton" parent="." instance=ExtResource("7_g8kuc")]
+offset_left = 106.0
+offset_top = 282.0
+offset_right = 106.0
+offset_bottom = 282.0

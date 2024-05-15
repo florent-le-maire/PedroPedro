@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dhw4saqdsfgg5"]
+
+[ext_resource type="PackedScene" uid="uid://bovk0tgv0wc8" path="res://Scenes/OptionsMenu/OptionsDisplayButton.tscn" id="1_eaghk"]
+[ext_resource type="Script" path="res://Scripts/OptionsMenu/WindowModeButton.cs" id="2_wreix"]
+
+[node name="WindowModeButton" node_paths=PackedStringArray("_optionButton") instance=ExtResource("1_eaghk")]
+script = ExtResource("2_wreix")
+_optionButton = NodePath("HBoxContainer/OptionButton")
+
+[node name="Label" parent="HBoxContainer" index="0"]
+modulate = Color(0.0214346, 0.0214346, 0.0214346, 1)
+text = "Window Mode"
+
+[connection signal="item_selected" from="HBoxContainer/OptionButton" to="." method="_on_option_button_item_selected"]

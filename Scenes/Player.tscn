@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://dwrhqajdb6jxe"]
+[gd_scene load_steps=7 format=3 uid="uid://dwrhqajdb6jxe"]
 
 [ext_resource type="Script" path="res://Scripts/Player/Player.cs" id="1_ihcmb"]
 [ext_resource type="AudioStream" uid="uid://cfwc0tuqu6qp0" path="res://Assets/Sounds/DamageSong.mp3" id="2_tlwwc"]
+[ext_resource type="PackedScene" uid="uid://pskxw2drw814" path="res://Scenes/Dash.tscn" id="3_ujx3x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8jdjw"]
 
@@ -9,9 +10,10 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yp7l2"]
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("DamageSound")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("DamageSound", "_dash")]
 script = ExtResource("1_ihcmb")
 DamageSound = NodePath("AudioStreamPlayer2D")
+_dash = NodePath("Dash")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_8jdjw")
@@ -29,5 +31,7 @@ shape = SubResource("RectangleShape2D_yp7l2")
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_tlwwc")
 bus = &"Sfx"
+
+[node name="Dash" parent="." instance=ExtResource("3_ujx3x")]
 
 [connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]

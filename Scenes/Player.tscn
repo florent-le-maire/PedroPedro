@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dwrhqajdb6jxe"]
+[gd_scene load_steps=6 format=3 uid="uid://dwrhqajdb6jxe"]
 
 [ext_resource type="Script" path="res://Scripts/Player/Player.cs" id="1_ihcmb"]
+[ext_resource type="AudioStream" uid="uid://cfwc0tuqu6qp0" path="res://Assets/Sounds/DamageSong.mp3" id="2_tlwwc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8jdjw"]
 
@@ -8,8 +9,9 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yp7l2"]
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("DamageSound")]
 script = ExtResource("1_ihcmb")
+DamageSound = NodePath("AudioStreamPlayer2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_8jdjw")
@@ -23,5 +25,9 @@ texture = SubResource("CanvasTexture_0g8u5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 shape = SubResource("RectangleShape2D_yp7l2")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_tlwwc")
+bus = &"Sfx"
 
 [connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]

@@ -5,6 +5,7 @@ namespace PedroBulletV2.Scripts.Player;
 public partial class Player : CharacterBody2D
 {
     [Export] public int PlayerMaxHealth = 4;
+    [Export] public AudioStreamPlayer2D DamageSound;
     public int PlayerCurrentHealth { get; set; } = 4;
 
     [Export] public int Speed { get; set; } = 200;
@@ -35,6 +36,7 @@ public partial class Player : CharacterBody2D
         // if (areaName.ToLower() == "bullet")
         // {
         PlayerCurrentHealth--;
+        DamageSound.Play();
         if (PlayerCurrentHealth < 0)
         {
             SetMaximunHealth();

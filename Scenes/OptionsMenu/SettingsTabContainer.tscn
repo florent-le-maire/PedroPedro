@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://b26acgpl7t6vs"]
+[gd_scene load_steps=5 format=3 uid="uid://b26acgpl7t6vs"]
 
 [ext_resource type="PackedScene" uid="uid://cwwctlea5ny47" path="res://Scenes/OptionsMenu/HotkeyRebindButton.tscn" id="1_6cwaf"]
+[ext_resource type="PackedScene" uid="uid://ce40dlikvjqaw" path="res://Scenes/OptionsMenu/AudioSliderSettings.tscn" id="1_ncgc6"]
+[ext_resource type="PackedScene" uid="uid://dhw4saqdsfgg5" path="res://Scenes/OptionsMenu/WindowModeButton.tscn" id="1_vjs2c"]
+[ext_resource type="PackedScene" uid="uid://bck6fvg07uxp3" path="res://Scenes/OptionsMenu/ResolutionModeButton.tscn" id="2_uiyjs"]
 
 [node name="SettingsTabContainer" type="Control"]
 layout_mode = 3
@@ -22,10 +25,8 @@ offset_bottom = -100.0
 grow_horizontal = 2
 grow_vertical = 2
 tab_alignment = 1
-current_tab = 2
 
 [node name="Sound" type="TabBar" parent="TabContainer"]
-visible = false
 layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="TabContainer/Sound"]
@@ -40,30 +41,23 @@ theme_override_constants/margin_top = 24
 theme_override_constants/margin_right = 24
 theme_override_constants/margin_bottom = 24
 
-[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Sound/MarginContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Sound/MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Sound/MarginContainer/ScrollContainer"]
 layout_mode = 2
 theme_override_constants/separation = 64
-alignment = 1
 
-[node name="Label" type="Label" parent="TabContainer/Sound/MarginContainer/VBoxContainer"]
+[node name="AudioSliderSettings" parent="TabContainer/Sound/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_ncgc6")]
 layout_mode = 2
-text = "123745789"
+_busName = "Master"
 
-[node name="Label2" type="Label" parent="TabContainer/Sound/MarginContainer/VBoxContainer"]
+[node name="AudioSliderSettings2" parent="TabContainer/Sound/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_ncgc6")]
 layout_mode = 2
-text = "123745789"
 
-[node name="Label3" type="Label" parent="TabContainer/Sound/MarginContainer/VBoxContainer"]
+[node name="AudioSliderSettings3" parent="TabContainer/Sound/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_ncgc6")]
 layout_mode = 2
-text = "123745789"
-
-[node name="Label4" type="Label" parent="TabContainer/Sound/MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "123745789"
-
-[node name="Label5" type="Label" parent="TabContainer/Sound/MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "123745789"
+_busName = "Sfx"
 
 [node name="Graphics" type="TabBar" parent="TabContainer"]
 visible = false
@@ -83,30 +77,17 @@ theme_override_constants/margin_bottom = 24
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Graphics/MarginContainer"]
 layout_mode = 2
-theme_override_constants/separation = 64
+theme_override_constants/separation = 100
 alignment = 1
 
-[node name="Label" type="Label" parent="TabContainer/Graphics/MarginContainer/VBoxContainer"]
+[node name="WindowModeButton" parent="TabContainer/Graphics/MarginContainer/VBoxContainer" instance=ExtResource("1_vjs2c")]
 layout_mode = 2
-text = "123745789"
 
-[node name="Label2" type="Label" parent="TabContainer/Graphics/MarginContainer/VBoxContainer"]
+[node name="ResolutionModeButton" parent="TabContainer/Graphics/MarginContainer/VBoxContainer" instance=ExtResource("2_uiyjs")]
 layout_mode = 2
-text = "123745789"
-
-[node name="Label3" type="Label" parent="TabContainer/Graphics/MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "123745789"
-
-[node name="Label4" type="Label" parent="TabContainer/Graphics/MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "123745789"
-
-[node name="Label5" type="Label" parent="TabContainer/Graphics/MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "123745789"
 
 [node name="Controls" type="TabBar" parent="TabContainer"]
+visible = false
 layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="TabContainer/Controls"]

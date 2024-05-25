@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://db6cwr10gvip8"]
+[gd_scene load_steps=4 format=3 uid="uid://db6cwr10gvip8"]
 
 [ext_resource type="Script" path="res://Scripts/OptionsMenu/MainMenu.cs" id="1_oqjh0"]
 [ext_resource type="Texture2D" uid="uid://c7agksqu2luij" path="res://Assets/Background/thumb-1920-966315.png" id="1_uc48e"]
-[ext_resource type="PackedScene" uid="uid://dkei3xhqdbukt" path="res://Scenes/Game.tscn" id="2_bbl4n"]
 [ext_resource type="PackedScene" uid="uid://c58pl6lqhvrm0" path="res://Scenes/OptionsMenu/SettingsMenu.tscn" id="4_05ltw"]
 
 [node name="MainMenu" type="Control" node_paths=PackedStringArray("_statButton", "_settingsButton", "_exitButton", "_settingsMenu", "_marginContainer")]
@@ -16,7 +15,6 @@ script = ExtResource("1_oqjh0")
 _statButton = NodePath("MarginContainer/HBoxContainer/VBoxContainer/StartButton")
 _settingsButton = NodePath("MarginContainer/HBoxContainer/VBoxContainer/SettingsButton")
 _exitButton = NodePath("MarginContainer/HBoxContainer/VBoxContainer/ExitButton")
-_startLevel = ExtResource("2_bbl4n")
 _settingsMenu = NodePath("SettingsMenu")
 _marginContainer = NodePath("MarginContainer")
 
@@ -95,3 +93,5 @@ text = "Exit"
 [node name="SettingsMenu" parent="." instance=ExtResource("4_05ltw")]
 visible = false
 layout_mode = 1
+
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]

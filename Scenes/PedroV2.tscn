@@ -1,10 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://b8sv50s64rque"]
+[gd_scene load_steps=9 format=3 uid="uid://b8sv50s64rque"]
 
 [ext_resource type="Texture2D" uid="uid://cdqnbops4a2t7" path="res://Assets/Sprites/knight.png" id="1_5vc3e"]
 [ext_resource type="Script" path="res://Scripts/Enemies/Pedro.cs" id="1_n2swe"]
-[ext_resource type="PackedScene" uid="uid://vc5p0mjfcjf" path="res://Scenes/Bullet.tscn" id="2_vah1w"]
 [ext_resource type="Script" path="res://Scripts/States/StateMachine.cs" id="2_wmv8j"]
-[ext_resource type="Script" path="res://Scripts/States/EnemyIdle.cs" id="3_c20td"]
+[ext_resource type="PackedScene" uid="uid://c6vuko0exde6b" path="res://Scenes/BulletPattern.tscn" id="6_0x84l"]
 [ext_resource type="Script" path="res://Scripts/States/EnemyCircleAttack.cs" id="6_7tswa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5mblk"]
@@ -25,9 +24,9 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="PedroV2" type="CharacterBody2D"]
+[node name="PedroV2" type="CharacterBody2D" node_paths=PackedStringArray("_bulletPattern")]
 script = ExtResource("1_n2swe")
-_bulletScene = ExtResource("2_vah1w")
+_bulletPattern = NodePath("BulletPattern")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, 2)
@@ -36,19 +35,17 @@ shape = SubResource("RectangleShape2D_5mblk")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_lvqww")
 
-[node name="Rotator" type="Node2D" parent="."]
-
-[node name="ShootTimer" type="Timer" parent="."]
-
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("2_wmv8j")
-_initialState = NodePath("EnemyIdle")
-
-[node name="EnemyIdle" type="Node" parent="StateMachine" node_paths=PackedStringArray("_enemy")]
-script = ExtResource("3_c20td")
-_enemy = NodePath("../..")
+_initialState = NodePath("EnemyCircleAttack")
 
 [node name="EnemyCircleAttack" type="Node" parent="StateMachine"]
 script = ExtResource("6_7tswa")
 
-[connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]
+[node name="BulletPattern" parent="." instance=ExtResource("6_0x84l")]
+position = Vector2(-1, 2)
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

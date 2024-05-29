@@ -11,6 +11,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yp7l2"]
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("DamageSound", "_dash")]
+scale = Vector2(0.5, 0.5)
 script = ExtResource("1_ihcmb")
 DamageSound = NodePath("AudioStreamPlayer2D")
 _dash = NodePath("Dash")

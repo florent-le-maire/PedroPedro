@@ -23,7 +23,6 @@ public partial class Dash : Node2D
 	{
 		_dashTimer.WaitTime = duration;
 		_dashTimer.Start();
-		GD.Print("Start"+IsDashing);
 		IsDashing = true;
 	}
 

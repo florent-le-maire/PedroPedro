@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://c6vuko0exde6b"]
+
+[ext_resource type="Script" path="res://Scripts/Enemies/BulletPattern.cs" id="1_6jurl"]
+[ext_resource type="PackedScene" uid="uid://vc5p0mjfcjf" path="res://Scenes/Bullet.tscn" id="2_0bt53"]
+
+[node name="BulletPattern" type="Node2D" node_paths=PackedStringArray("_shootTimer", "_rotator")]
+position = Vector2(375, 187)
+script = ExtResource("1_6jurl")
+_bulletScene = ExtResource("2_0bt53")
+_shootTimer = NodePath("ShootTimer")
+_rotator = NodePath("Rotator")
+
+[node name="Rotator" type="Node2D" parent="."]
+
+[node name="ShootTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]

@@ -1,13 +1,19 @@
-[gd_scene load_steps=7 format=3 uid="uid://dkei3xhqdbukt"]
+[gd_scene load_steps=9 format=3 uid="uid://dkei3xhqdbukt"]
 
 [ext_resource type="Script" path="res://Scripts/GameManager.cs" id="1_5meam"]
+[ext_resource type="Script" path="res://Scripts/Game.cs" id="1_vc8mq"]
 [ext_resource type="PackedScene" uid="uid://dwrhqajdb6jxe" path="res://Scenes/Player.tscn" id="1_xooaa"]
 [ext_resource type="PackedScene" uid="uid://b8sv50s64rque" path="res://Scenes/PedroV2.tscn" id="2_2tmoi"]
 [ext_resource type="PackedScene" uid="uid://bx8qauivkstee" path="res://Scenes/GUI/HealthBar.tscn" id="3_nrswk"]
 [ext_resource type="PackedScene" uid="uid://bmff33m2nffx" path="res://Scenes/OptionsMenu/PauseMenu.tscn" id="4_5uc4o"]
 [ext_resource type="AudioStream" uid="uid://bxddn1ljco6rd" path="res://Assets/Musics/Raffaella Carrà - Pedro (Jaxomy & Agatino Romero Remix).mp3" id="5_cmbgc"]
 
-[node name="Game" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s150m"]
+size = Vector2(20, 680)
+
+[node name="Game" type="Node2D" node_paths=PackedStringArray("_music")]
+script = ExtResource("1_vc8mq")
+_music = NodePath("MusicStreamPlayer")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_right = 40.0
@@ -16,6 +22,8 @@ scale = Vector2(29.0868, 16.432)
 
 [node name="Player" parent="." instance=ExtResource("1_xooaa")]
 position = Vector2(612, 395)
+_normalSpeed = 100
+_dashSpeed = 800
 
 [node name="PedroV2" parent="." instance=ExtResource("2_2tmoi")]
 position = Vector2(585, 53)
@@ -39,5 +47,38 @@ _game = NodePath("../..")
 
 [node name="MusicStreamPlayer" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_cmbgc")
-autoplay = true
 bus = &"Music"
+
+[node name="Walls" type="Node2D" parent="."]
+
+[node name="Wall" type="StaticBody2D" parent="Walls"]
+position = Vector2(-10, 5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall"]
+position = Vector2(0, 330)
+shape = SubResource("RectangleShape2D_s150m")
+
+[node name="Wall2" type="StaticBody2D" parent="Walls"]
+position = Vector2(0, -7)
+rotation = -1.5708
+scale = Vector2(0.791035, 1.86946)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall2"]
+position = Vector2(0, 330)
+shape = SubResource("RectangleShape2D_s150m")
+
+[node name="Wall3" type="StaticBody2D" parent="Walls"]
+position = Vector2(1163, -5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall3"]
+position = Vector2(0, 330)
+shape = SubResource("RectangleShape2D_s150m")
+
+[node name="Wall4" type="StaticBody2D" parent="Walls"]
+position = Vector2(-9, 656)
+rotation = -1.5708
+scale = Vector2(0.791035, 1.86946)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall4"]
+position = Vector2(0, 330)
+shape = SubResource("RectangleShape2D_s150m")

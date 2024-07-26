@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://l6ys0fom63g7"]
+
+[ext_resource type="Script" path="res://Scenes/3D/PerlinNoise.cs" id="1_0fw8n"]
+[ext_resource type="PackedScene" uid="uid://c2rgivoc5ahd" path="res://Scenes/3D/Sphere.tscn" id="2_sfd41"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_jv4ym"]
+noise_type = 3
+seed = 4567
+
+[node name="PerlinNoise" type="Node3D" node_paths=PackedStringArray("_sphereRoot")]
+script = ExtResource("1_0fw8n")
+_perlinNoise = SubResource("FastNoiseLite_jv4ym")
+_sphereRoot = NodePath("SphereRoot")
+_sphere = ExtResource("2_sfd41")
+_amplitude = 0.1
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.911037, -0.141024, 0.387459, -0.0717768, 0.871104, 0.485825, -0.40603, -0.470415, 0.783485, 15, 15, 30)
+
+[node name="SphereRoot" type="Node3D" parent="."]

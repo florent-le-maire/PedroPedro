@@ -52,6 +52,10 @@ public partial class PauseMenu : Control
 	void _on_restart_pressed()
 	{
 		Resume();
+		foreach (Node obj in GetTree().GetNodesInGroup("InstancedObjects"))
+		{
+			obj.QueueFree();
+		}
 		GetTree().ReloadCurrentScene();
 	}	
 	void _on_resume_pressed()

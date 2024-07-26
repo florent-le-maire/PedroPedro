@@ -18,6 +18,8 @@ public partial class Player : CharacterBody2D
 
     [Signal]
     public delegate void HealthChangedEventHandler(int currentHealth);
+    [Signal]
+    public delegate void PlayerDieEventHandler();
 
     public override void _Ready()
     {
@@ -56,10 +58,7 @@ public partial class Player : CharacterBody2D
         // {
         PlayerCurrentHealth--;
         DamageSound.Play();
-        if (PlayerCurrentHealth < 0)
-        {
-            SetMaximunHealth();
-        }
+        IsThePlayerDead();
         EmitSignal(nameof(HealthChanged),PlayerCurrentHealth);
         // }
     }
@@ -67,5 +66,13 @@ public partial class Player : CharacterBody2D
     private void SetMaximunHealth()
     {
         PlayerCurrentHealth = PlayerMaxHealth;
+    }
+
+    private void IsThePlayerDead()
+    {
+        if (PlayerCurrentHealth <= 0)
+        {
+            EmitSignal(nameof(PlayerDie));
+        }
     }
 }

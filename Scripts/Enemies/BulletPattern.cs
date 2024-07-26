@@ -69,6 +69,7 @@ public partial class BulletPattern : Node2D
         {
             var bullet = _bulletScene.Instantiate<Bullet>();
             GetTree().Root.AddChild(bullet);
+            bullet.AddToGroup("InstancedObjects");
             bullet.Position = child.GlobalPosition;
             bullet.Rotation = child.GlobalRotation;
         }

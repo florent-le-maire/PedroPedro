@@ -24,6 +24,10 @@ public partial class MainMenu : Control
 
 	private void OnStartButtonPressed()
 	{
+		foreach (Node obj in GetTree().GetNodesInGroup("InstancedObjects"))
+		{
+			obj.QueueFree();
+		}
 		GetTree().ChangeSceneToPacked(_startLevel);
 	}
 

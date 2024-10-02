@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://Scripts/States/EnemyCircleAttack.cs" id="6_7tswa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5mblk"]
-size = Vector2(13, 18)
+size = Vector2(22, 45)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hiysn"]
 atlas = ExtResource("2_y6oup")
@@ -48,12 +48,11 @@ animations = [{
 [node name="PedroV2" type="CharacterBody2D" node_paths=PackedStringArray("_bulletPattern")]
 script = ExtResource("1_n2swe")
 _bulletPattern = NodePath("BulletPattern")
-_rotateSpeed = -100
 _shooterTimerWaitTime = 0.05
 _spawnPointCount = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, 2)
+position = Vector2(0, -6.5)
 shape = SubResource("RectangleShape2D_5mblk")
 
 [node name="BulletPattern" parent="." instance=ExtResource("6_0x84l")]

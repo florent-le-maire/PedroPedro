@@ -15,9 +15,12 @@ public partial class Player : CharacterBody2D
     [Export] private int _dashSpeed = 1000;
     [Export] private float _dashLength = 0.1f;
 
+    [Export] private PackedScene _destruction;
+
 
     [Signal]
     public delegate void HealthChangedEventHandler(int currentHealth);
+
     [Signal]
     public delegate void PlayerDieEventHandler();
 
@@ -34,6 +37,7 @@ public partial class Player : CharacterBody2D
         {
             _dash.StartDash(_dashLength);
         }
+
         if (_dash.IsDashing)
         {
             Speed = _dashSpeed;
@@ -42,6 +46,7 @@ public partial class Player : CharacterBody2D
         {
             Speed = _normalSpeed;
         }
+
         Velocity = inputDirection * Speed;
     }
 
@@ -56,10 +61,13 @@ public partial class Player : CharacterBody2D
         string areaName = area.Name;
         // if (areaName.ToLower() == "bullet")
         // {
+        var destruction = _destruction.Instantiate();
+        CallDeferred("add_child", destruction);
+        destruction.AddToGroup("InstancedObjects");
         PlayerCurrentHealth--;
         DamageSound.Play();
         IsThePlayerDead();
-        EmitSignal(nameof(HealthChanged),PlayerCurrentHealth);
+        EmitSignal(nameof(HealthChanged), PlayerCurrentHealth);
         // }
     }
 

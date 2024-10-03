@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dkei3xhqdbukt"]
+[gd_scene load_steps=12 format=3 uid="uid://dkei3xhqdbukt"]
 
 [ext_resource type="Script" path="res://Scripts/GameManager.cs" id="1_5meam"]
 [ext_resource type="Script" path="res://Scripts/Game.cs" id="1_vc8mq"]
@@ -9,13 +9,13 @@
 [ext_resource type="AudioStream" uid="uid://bxddn1ljco6rd" path="res://Assets/Musics/Raffaella Carrà - Pedro (Jaxomy & Agatino Romero Remix).mp3" id="5_cmbgc"]
 [ext_resource type="PackedScene" uid="uid://buetfetculuya" path="res://Scenes/GUI/GameOver.tscn" id="7_g3de6"]
 [ext_resource type="AudioStream" uid="uid://b0wcv4hvrndeg" path="res://Assets/Sounds/Death.mp3" id="9_angty"]
+[ext_resource type="PackedScene" uid="uid://b7kjug5duo45s" path="res://Scenes/Music/Conductor.tscn" id="10_rp7um"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s150m"]
 size = Vector2(20, 680)
 
-[node name="Game" type="Node2D" node_paths=PackedStringArray("_music")]
+[node name="Game" type="Node2D"]
 script = ExtResource("1_vc8mq")
-_music = NodePath("MusicStreamPlayer")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_right = 40.0
@@ -53,10 +53,6 @@ offset_bottom = 0.0
 _game = NodePath("../..")
 
 [node name="HealthBar" parent="CanvasLayer" instance=ExtResource("3_nrswk")]
-
-[node name="MusicStreamPlayer" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("5_cmbgc")
-bus = &"Music"
 
 [node name="Walls" type="Node2D" parent="."]
 
@@ -96,3 +92,6 @@ shape = SubResource("RectangleShape2D_s150m")
 process_mode = 3
 stream = ExtResource("9_angty")
 bus = &"Sfx"
+
+[node name="Conductor" parent="." instance=ExtResource("10_rp7um")]
+stream = ExtResource("5_cmbgc")

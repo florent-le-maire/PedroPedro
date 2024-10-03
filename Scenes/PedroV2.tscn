@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://b8sv50s64rque"]
+[gd_scene load_steps=13 format=3 uid="uid://b8sv50s64rque"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/Pedro.cs" id="1_n2swe"]
 [ext_resource type="Script" path="res://Scripts/States/StateMachine.cs" id="2_wmv8j"]
 [ext_resource type="Texture2D" uid="uid://bupa08ghgp5fi" path="res://Assets/Sprites/Pedro.png" id="2_y6oup"]
+[ext_resource type="PackedScene" uid="uid://b7kjug5duo45s" path="res://Scenes/Music/Conductor.tscn" id="3_k5nxp"]
 [ext_resource type="PackedScene" uid="uid://c6vuko0exde6b" path="res://Scenes/BulletPattern.tscn" id="6_0x84l"]
 [ext_resource type="Script" path="res://Scripts/States/EnemyCircleAttack.cs" id="6_7tswa"]
 
@@ -48,15 +49,20 @@ animations = [{
 [node name="PedroV2" type="CharacterBody2D" node_paths=PackedStringArray("_bulletPattern")]
 script = ExtResource("1_n2swe")
 _bulletPattern = NodePath("BulletPattern")
-_shooterTimerWaitTime = 0.05
+_rotateSpeed = 0
+_shooterTimerWaitTime = 0.5
 _spawnPointCount = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -6.5)
 shape = SubResource("RectangleShape2D_5mblk")
 
-[node name="BulletPattern" parent="." instance=ExtResource("6_0x84l")]
+[node name="BulletPattern" parent="." node_paths=PackedStringArray("_conductor") instance=ExtResource("6_0x84l")]
 position = Vector2(-1, -27)
+_spawnPointCount = 20
+_conductor = NodePath("Conductor")
+
+[node name="Conductor" parent="BulletPattern" instance=ExtResource("3_k5nxp")]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.2, 0.2)

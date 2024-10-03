@@ -29,15 +29,17 @@ public partial class BulletPattern : Node2D
     [Export] private int _spawnPointCount = 4;
     [Export] private int _radius = 100;
 
+    [Export] private Conductor _conductor;
+
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
         InitialisePattern();
+        _conductor.Play();
     }
 
     private void InitialisePattern()
     {
-        _shootTimer.Stop();
         foreach (var child in _rotator.GetChildren())
         {
             child.QueueFree();
@@ -52,8 +54,8 @@ public partial class BulletPattern : Node2D
             _rotator.AddChild(spawnPoint);
         }
 
-        _shootTimer.WaitTime = _shooterTimerWaitTime;
-        _shootTimer.Start();
+        _conductor.Beat += BeatWasEmit;
+        _conductor.Measure += MeasureWasEmit;
     }
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -63,17 +65,27 @@ public partial class BulletPattern : Node2D
         _rotator.RotationDegrees = (float)newRotation % 360;
     }
 
-    void _on_shoot_timer_timeout()
+    void BeatWasEmit(float i)
     {
-        foreach (Node2D child in _rotator.GetChildren())
-        {
-            var bullet = _bulletScene.Instantiate<Bullet>();
-            GetTree().Root.AddChild(bullet);
-            bullet.AddToGroup("InstancedObjects");
-            bullet.Position = child.GlobalPosition;
-            bullet.Rotation = child.GlobalRotation;
-        }
+        Shoot();
     }
+
+    void MeasureWasEmit(float i)
+    {
+        // GD.Print("JE SUIS LA MESURE = "+i);
+    }
+
+    // void _on_shoot_timer_timeout()
+    // {
+    //     foreach (Node2D child in _rotator.GetChildren())
+    //     {
+    //         var bullet = _bulletScene.Instantiate<Bullet>();
+    //         GetTree().Root.AddChild(bullet);
+    //         bullet.AddToGroup("InstancedObjects");
+    //         bullet.Position = child.GlobalPosition;
+    //         bullet.Rotation = child.GlobalRotation;
+    //     }
+    // }
 
     public void ChangeParameter(PatternInformation patternInformation)
     {
@@ -83,5 +95,18 @@ public partial class BulletPattern : Node2D
         _radius = patternInformation.Radius;
 
         InitialisePattern();
+    }
+
+
+    private void Shoot()
+    {
+        foreach (Node2D child in _rotator.GetChildren())
+        {
+            var bullet = _bulletScene.Instantiate<Bullet>();
+            GetTree().Root.AddChild(bullet);
+            bullet.AddToGroup("InstancedObjects");
+            bullet.Position = child.GlobalPosition;
+            bullet.Rotation = child.GlobalRotation;
+        }
     }
 }

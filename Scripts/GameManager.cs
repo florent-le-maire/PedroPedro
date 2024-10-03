@@ -9,7 +9,6 @@ public partial class GameManager : Node
     [Export] private Control _gameOverScreen;
     [Export] private AudioStreamPlayer2D _deathSong;
 
-
     public override void _Ready()
     {
         _healthBar.SetMaxHearts(_player.PlayerMaxHealth);

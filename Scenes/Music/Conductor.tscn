@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://b7kjug5duo45s"]
+
+[ext_resource type="AudioStream" uid="uid://bxddn1ljco6rd" path="res://Assets/Musics/Raffaella Carrà - Pedro (Jaxomy & Agatino Romero Remix).mp3" id="1_m3for"]
+[ext_resource type="Script" path="res://Scripts/Music/Conductor.cs" id="1_v054r"]
+
+[node name="Conductor" type="AudioStreamPlayer" node_paths=PackedStringArray("_startTimer")]
+stream = ExtResource("1_m3for")
+script = ExtResource("1_v054r")
+_startTimer = NodePath("StartTimer")
+
+[node name="StartTimer" type="Timer" parent="."]
+wait_time = 0.061
+
+[connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]

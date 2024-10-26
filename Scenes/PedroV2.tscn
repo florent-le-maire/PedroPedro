@@ -59,6 +59,7 @@ shape = SubResource("RectangleShape2D_5mblk")
 
 [node name="BulletPattern" parent="." node_paths=PackedStringArray("_conductor") instance=ExtResource("6_0x84l")]
 position = Vector2(-1, -27)
+_rotateSpeed = 0
 _spawnPointCount = 20
 _conductor = NodePath("Conductor")
 

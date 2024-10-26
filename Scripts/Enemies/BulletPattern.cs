@@ -44,6 +44,7 @@ public partial class BulletPattern : Node2D
         {
             child.QueueFree();
         }
+
         var step = 2 * Mathf.Pi / _spawnPointCount;
         for (int i = 0; i < _spawnPointCount; i++)
         {
@@ -67,12 +68,40 @@ public partial class BulletPattern : Node2D
 
     void BeatWasEmit(float i)
     {
-        Shoot();
+        var bullet = _bulletScene.Instantiate<Bullet>();
+        GetTree().Root.AddChild(bullet);
+        bullet.AddToGroup("InstancedObjects");
+        bullet.Position = new Vector2(0, 50);
     }
 
     void MeasureWasEmit(float i)
     {
-        // GD.Print("JE SUIS LA MESURE = "+i);
+        var bullet = _bulletScene.Instantiate<Bullet>();
+        switch (i)
+        {
+            case 1:
+                GetTree().Root.AddChild(bullet);
+                bullet.AddToGroup("InstancedObjects");
+                bullet.Position = new Vector2(0, 75);
+                break;
+            case 2:
+                GetTree().Root.AddChild(bullet);
+                bullet.AddToGroup("InstancedObjects");
+                bullet.Position = new Vector2(0, 100);
+                break;
+            case 3:
+                GetTree().Root.AddChild(bullet);
+                bullet.AddToGroup("InstancedObjects");
+                bullet.Position = new Vector2(0, 125);
+                break;
+            case 4:
+                GetTree().Root.AddChild(bullet);
+                bullet.AddToGroup("InstancedObjects");
+                bullet.Position = new Vector2(0, 150);
+                break;
+            default:
+                break;
+        }
     }
 
     // void _on_shoot_timer_timeout()

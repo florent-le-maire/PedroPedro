@@ -15,6 +15,7 @@ public partial class GameManager : Node
         _healthBar.UpdateHearts(_player.PlayerCurrentHealth);
         _player.HealthChanged += _healthBar.UpdateHearts;
         _player.PlayerDie += ShowGameOver;
+
     }
 
     private void ShowGameOver()

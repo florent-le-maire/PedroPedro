@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://uw202hmo5pyr"]
+[gd_scene load_steps=4 format=3 uid="uid://uw202hmo5pyr"]
 
 [ext_resource type="Script" path="res://Scripts/Music/Analyzer.cs" id="1_l5q4e"]
 [ext_resource type="Shader" path="res://Assets/Shaders/Analyzer.gdshader" id="1_tnchd"]
-[ext_resource type="PackedScene" uid="uid://b7kjug5duo45s" path="res://Scenes/Music/Conductor.tscn" id="3_oqpwa"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_opjwt"]
 shader = ExtResource("1_tnchd")
@@ -16,8 +15,3 @@ _colorRect = NodePath("ColorRect")
 material = SubResource("ShaderMaterial_opjwt")
 offset_right = 600.0
 offset_bottom = 400.0
-
-[node name="Conductor" parent="." instance=ExtResource("3_oqpwa")]
-volume_db = -7.8
-autoplay = true
-bus = &"Music"

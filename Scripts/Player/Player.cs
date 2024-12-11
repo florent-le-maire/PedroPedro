@@ -53,7 +53,7 @@ public partial class Player : CharacterBody2D
     public override void _PhysicsProcess(double delta)
     {
         GetInput();
-        MoveAndSlide();
+        MoveAndCollide(Velocity * (float)delta);
     }
 
     void _on_hurt_box_area_entered(Area2D area)

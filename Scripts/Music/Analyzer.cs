@@ -6,8 +6,8 @@ public partial class Analyzer : Node2D
 {
     [Export] private ColorRect _colorRect;
 
-    private int _vuCount = 30;
-    private float _freqMax = 11050.0f;
+    private int _vuCount = 10;
+    private float _freqMax = 20000.0f;
     private int _minDb = 60;
 
     private float _animationSpeed = 0.1f;

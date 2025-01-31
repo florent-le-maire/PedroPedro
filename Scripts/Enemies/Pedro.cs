@@ -35,6 +35,6 @@ public partial class Pedro : CharacterBody2D
         int rotationSpeed = _rotateSpeed;
         int spawnPoint = _spawnPointCount;
         float shootWaitTime = _shooterTimerWaitTime;
-        // _bulletPattern.ChangeParameter(new PatternInformation(rotationSpeed,shootWaitTime,spawnPoint,100));
+        _bulletPattern.ChangeParameter(new PatternInformation(rotationSpeed,shootWaitTime,spawnPoint,100));
     }
 }

@@ -93,3 +93,4 @@ stream = ExtResource("9_angty")
 bus = &"Sfx"
 
 [node name="Analyzer" parent="." instance=ExtResource("10_f8cgf")]
+visible = false

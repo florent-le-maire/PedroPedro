@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bihr7vbvjrh6e"]
+
+[ext_resource type="Script" path="res://Scripts/Music/MusicTrigger.cs" id="1_otkxd"]
+
+[node name="MusicTrigger" type="Node2D"]
+script = ExtResource("1_otkxd")

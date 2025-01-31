@@ -49,9 +49,9 @@ animations = [{
 [node name="PedroV2" type="CharacterBody2D" node_paths=PackedStringArray("_bulletPattern")]
 script = ExtResource("1_n2swe")
 _bulletPattern = NodePath("BulletPattern")
-_rotateSpeed = 0
-_shooterTimerWaitTime = 0.5
-_spawnPointCount = 6
+_rotateSpeed = 30
+_shooterTimerWaitTime = 0.01
+_spawnPointCount = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -6.5)
@@ -59,11 +59,13 @@ shape = SubResource("RectangleShape2D_5mblk")
 
 [node name="BulletPattern" parent="." node_paths=PackedStringArray("_conductor") instance=ExtResource("6_0x84l")]
 position = Vector2(-1, -27)
-_rotateSpeed = 0
-_spawnPointCount = 20
+_rotateSpeed = 360
+_shooterTimerWaitTime = 0.01
+_spawnPointCount = 1
 _conductor = NodePath("Conductor")
 
 [node name="Conductor" parent="BulletPattern" instance=ExtResource("3_k5nxp")]
+bus = &"Music"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.2, 0.2)

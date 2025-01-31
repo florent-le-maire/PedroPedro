@@ -21,11 +21,10 @@ public struct PatternInformation
 public partial class BulletPattern : Node2D
 {
     [Export] private PackedScene _bulletScene;
-    [Export] private Timer _shootTimer;
     [Export] private Node2D _rotator;
 
     [Export] private int _rotateSpeed = 100;
-    [Export] private float _shooterTimerWaitTime = 0.2f;
+    [Export] private float _shooterTimerWaitTime = 1.0f;
     [Export] private int _spawnPointCount = 4;
     [Export] private int _radius = 100;
 
@@ -56,7 +55,7 @@ public partial class BulletPattern : Node2D
         }
 
         _conductor.Beat += BeatWasEmit;
-        _conductor.Measure += MeasureWasEmit;
+        // _conductor.Measure += MeasureWasEmit;
     }
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -68,10 +67,18 @@ public partial class BulletPattern : Node2D
 
     void BeatWasEmit(float i)
     {
-        var bullet = _bulletScene.Instantiate<Bullet>();
-        GetTree().Root.AddChild(bullet);
-        bullet.AddToGroup("InstancedObjects");
-        bullet.Position = new Vector2(0, 50);
+        // var bullet = _bulletScene.Instantiate<Bullet>();
+        // GetTree().Root.AddChild(bullet);
+        // bullet.AddToGroup("InstancedObjects");
+        // bullet.Position = new Vector2(0, 50);
+        foreach (Node2D child in _rotator.GetChildren())
+        {
+            var bullet = _bulletScene.Instantiate<Bullet>();
+            GetTree().Root.AddChild(bullet);
+            bullet.AddToGroup("InstancedObjects");
+            bullet.Position = child.GlobalPosition;
+            bullet.Rotation = child.GlobalRotation;
+        }
     }
 
     void MeasureWasEmit(float i)
@@ -118,12 +125,12 @@ public partial class BulletPattern : Node2D
 
     public void ChangeParameter(PatternInformation patternInformation)
     {
-        _rotateSpeed = patternInformation.RotateSpeed;
-        _shooterTimerWaitTime = patternInformation.ShooterTimerWaitTime;
-        _spawnPointCount = patternInformation.SpawnPointCount;
-        _radius = patternInformation.Radius;
+        // _rotateSpeed = patternInformation.RotateSpeed;
+        // _shooterTimerWaitTime = patternInformation.ShooterTimerWaitTime;
+        // _spawnPointCount = patternInformation.SpawnPointCount;
+        // _radius = patternInformation.Radius;
 
-        InitialisePattern();
+        // InitialisePattern();
     }
 
 

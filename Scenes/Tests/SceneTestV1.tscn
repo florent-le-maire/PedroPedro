@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://c4gbpab2n5j4a"]
+
+[ext_resource type="PackedScene" uid="uid://ddjb0e7htbkd4" path="res://Scenes/Enemies/PedroV3.tscn" id="1_8wei1"]
+[ext_resource type="Script" path="res://Scenes/Tests/SceneTestV1.cs" id="1_x45u6"]
+
+[node name="SceneTestV1" type="Node2D"]
+script = ExtResource("1_x45u6")
+
+[node name="PedroV3" parent="." instance=ExtResource("1_8wei1")]
+position = Vector2(445, 168)

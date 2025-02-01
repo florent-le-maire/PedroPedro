@@ -1,6 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://d16i4r60vvfjq"]
+[gd_scene load_steps=4 format=3 uid="uid://d16i4r60vvfjq"]
 
 [ext_resource type="Script" path="res://Scripts/Pattern/Pattern.cs" id="1_lbio0"]
+[ext_resource type="PackedScene" uid="uid://dejocpw4xcvkg" path="res://Scenes/Pattern/Attacks/Spawner.tscn" id="2_g0sj8"]
+[ext_resource type="PackedScene" uid="uid://4x6j78uoougm" path="res://Scenes/Pattern/Attacks/Rotator.tscn" id="3_tqr0y"]
 
 [node name="Pattern" type="Node2D"]
+position = Vector2(0, -1)
 script = ExtResource("1_lbio0")
+_rotator = ExtResource("3_tqr0y")
+_spawner = ExtResource("2_g0sj8")

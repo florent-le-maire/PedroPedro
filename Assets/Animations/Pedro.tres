@@ -1,0 +1,39 @@
+[gd_resource type="SpriteFrames" load_steps=6 format=3 uid="uid://dk2rpjevk5xy5"]
+
+[ext_resource type="Texture2D" uid="uid://bupa08ghgp5fi" path="res://Assets/Sprites/Pedro.png" id="1_wp1nv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hiysn"]
+atlas = ExtResource("1_wp1nv")
+region = Rect2(0, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o3dan"]
+atlas = ExtResource("1_wp1nv")
+region = Rect2(500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p7po3"]
+atlas = ExtResource("1_wp1nv")
+region = Rect2(1000, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b0te4"]
+atlas = ExtResource("1_wp1nv")
+region = Rect2(1500, 0, 500, 500)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hiysn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o3dan")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p7po3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b0te4")
+}],
+"loop": true,
+"name": &"move",
+"speed": 11.0
+}]

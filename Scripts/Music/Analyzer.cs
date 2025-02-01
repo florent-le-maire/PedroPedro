@@ -146,9 +146,9 @@ public partial class Analyzer : Node2D
         }
 
 
-        GD.Print("Bass : " + countBass + " Sur :"+ _vuCountBass);
-        GD.Print("Medium : " + countMedium + " Sur :"+ _vuCountMedium);
-        GD.Print("Treble : " + countTreble + " Sur :"+ _vuCountTreble);
+        // GD.Print("Bass : " + countBass + " Sur :"+ _vuCountBass);
+        // GD.Print("Medium : " + countMedium + " Sur :"+ _vuCountMedium);
+        // GD.Print("Treble : " + countTreble + " Sur :"+ _vuCountTreble);
     }
 
     private float GetAverage(Godot.Collections.Array data)

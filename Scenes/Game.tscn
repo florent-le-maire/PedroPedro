@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dkei3xhqdbukt"]
+[gd_scene load_steps=12 format=3 uid="uid://dkei3xhqdbukt"]
 
 [ext_resource type="Script" path="res://Scripts/GameManager.cs" id="1_5meam"]
 [ext_resource type="Script" path="res://Scripts/Game.cs" id="1_vc8mq"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://buetfetculuya" path="res://Scenes/GUI/GameOver.tscn" id="7_g3de6"]
 [ext_resource type="AudioStream" uid="uid://b0wcv4hvrndeg" path="res://Assets/Sounds/Death.mp3" id="9_angty"]
 [ext_resource type="PackedScene" uid="uid://uw202hmo5pyr" path="res://Scenes/GUI/Analyzer.tscn" id="10_f8cgf"]
+[ext_resource type="PackedScene" uid="uid://cc1xu8kmhafnq" path="res://Scenes/Pattern/Attacks/AoeV2.tscn" id="11_ae7ec"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s150m"]
 size = Vector2(20, 680)
@@ -94,3 +95,9 @@ bus = &"Sfx"
 
 [node name="Analyzer" parent="." instance=ExtResource("10_f8cgf")]
 visible = false
+
+[node name="AoeV2" parent="." instance=ExtResource("11_ae7ec")]
+position = Vector2(444, 350)
+_delay = 5.0
+_delayBeforeDeleting = 5.1
+_radius = 200.0

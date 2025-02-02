@@ -1,5 +1,6 @@
 using System;
 using Godot;
+using PedroBulletV2.Scripts.Pattern;
 
 namespace PedroBulletV2.Scenes.Enemies;
 
@@ -9,6 +10,7 @@ public partial class PedroV3 : CharacterBody2D
     [Export] private float _shooterTimerWaitTime = 0.2f;
     [Export] private int _spawnPointCount = 4;
     [Export] private Conductor _conductor;
+    [Export] private PatternManager _patternManager;
 
 
     // Called when the node enters the scene tree for the first time.
@@ -32,31 +34,23 @@ public partial class PedroV3 : CharacterBody2D
     
     void MeasureWasEmit(float i)
     {
+        _patternManager.CreatePattern((int)i);
         // var bullet = _bulletScene.Instantiate<Bullet>();
-        // switch (i)
-        // {
-        //     case 1:
-        //         GetTree().Root.AddChild(bullet);
-        //         bullet.AddToGroup("InstancedObjects");
-        //         bullet.Position = new Vector2(0, 75);
-        //         break;
-        //     case 2:
-        //         GetTree().Root.AddChild(bullet);
-        //         bullet.AddToGroup("InstancedObjects");
-        //         bullet.Position = new Vector2(0, 100);
-        //         break;
-        //     case 3:
-        //         GetTree().Root.AddChild(bullet);
-        //         bullet.AddToGroup("InstancedObjects");
-        //         bullet.Position = new Vector2(0, 125);
-        //         break;
-        //     case 4:
-        //         GetTree().Root.AddChild(bullet);
-        //         bullet.AddToGroup("InstancedObjects");
-        //         bullet.Position = new Vector2(0, 150);
-        //         break;
-        //     default:
-        //         break;
-        // }
+        switch (i)
+        {
+            case 1:
+                
+                break;
+            case 2:
+
+                break;
+            case 3:
+
+                break;
+            case 4:
+
+                break;
+     
+        }
     }
 }

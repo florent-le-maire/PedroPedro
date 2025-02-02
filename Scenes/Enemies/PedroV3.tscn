@@ -1,17 +1,19 @@
-[gd_scene load_steps=5 format=3 uid="uid://ddjb0e7htbkd4"]
+[gd_scene load_steps=6 format=3 uid="uid://ddjb0e7htbkd4"]
 
 [ext_resource type="SpriteFrames" uid="uid://dk2rpjevk5xy5" path="res://Assets/Animations/Pedro.tres" id="1_irywx"]
 [ext_resource type="Script" path="res://Scenes/Enemies/PedroV3.cs" id="1_sehpx"]
 [ext_resource type="PackedScene" uid="uid://b7kjug5duo45s" path="res://Scenes/Music/Conductor.tscn" id="2_870p1"]
+[ext_resource type="PackedScene" uid="uid://y8s5pavo0b0e" path="res://Scenes/Pattern/PatternManager.tscn" id="4_33p8w"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lcvrb"]
 radius = 8.0
 height = 31.0
 
-[node name="PedroV3" type="CharacterBody2D" node_paths=PackedStringArray("_conductor")]
+[node name="PedroV3" type="CharacterBody2D" node_paths=PackedStringArray("_conductor", "_patternManager")]
 scale = Vector2(2, 2)
 script = ExtResource("1_sehpx")
 _conductor = NodePath("Conductor")
+_patternManager = NodePath("PatternManager")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_lcvrb")
@@ -25,3 +27,5 @@ autoplay = "move"
 
 [node name="Conductor" parent="." instance=ExtResource("2_870p1")]
 bus = &"Music"
+
+[node name="PatternManager" parent="." instance=ExtResource("4_33p8w")]

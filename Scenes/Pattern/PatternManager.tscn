@@ -1,6 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://y8s5pavo0b0e"]
+[gd_scene load_steps=4 format=3 uid="uid://y8s5pavo0b0e"]
 
 [ext_resource type="Script" path="res://Scripts/Pattern/PatternManager.cs" id="1_hon63"]
+[ext_resource type="PackedScene" uid="uid://d16i4r60vvfjq" path="res://Scenes/Pattern/Pattern.tscn" id="2_svks2"]
+[ext_resource type="PackedScene" uid="uid://uw202hmo5pyr" path="res://Scenes/GUI/Analyzer.tscn" id="3_kevex"]
 
-[node name="PatternManager" type="Node2D"]
+[node name="PatternManager" type="Node2D" node_paths=PackedStringArray("_analyzer", "_pattern")]
 script = ExtResource("1_hon63")
+_analyzer = NodePath("Analyzer")
+_pattern = NodePath("Pattern")
+
+[node name="Pattern" parent="." instance=ExtResource("2_svks2")]
+
+[node name="Analyzer" parent="." instance=ExtResource("3_kevex")]
+visible = false

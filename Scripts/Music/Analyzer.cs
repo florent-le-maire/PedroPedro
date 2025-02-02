@@ -17,6 +17,11 @@ public partial class Analyzer : Node2D
     private int[] _freqRangeTreble = { 2000, 20000 };
     private int _minDb = 60;
 
+    [Signal]
+    public delegate void AnalyzerSignalEventHandler(int countBass
+        , int countMedium
+        , int countTreble);
+
     private float _animationSpeed = 0.1f;
     private float _heightScale = 8.0f;
 
@@ -88,7 +93,8 @@ public partial class Analyzer : Node2D
         (mat as ShaderMaterial)?.SetShaderParameter("freq_data", fft);
     }
 
-    private Godot.Collections.Array GetSpectrumDataForSpecifiedRange(Godot.Collections.Array data,int vuCount, int freqMin, int freqMax)
+    private Godot.Collections.Array GetSpectrumDataForSpecifiedRange(Godot.Collections.Array data, int vuCount,
+        int freqMin, int freqMax)
     {
         float prevHz = freqMin;
 
@@ -100,6 +106,7 @@ public partial class Analyzer : Node2D
             data.Add(energy * _heightScale);
             prevHz = hz;
         }
+
         return data;
     }
 
@@ -127,25 +134,27 @@ public partial class Analyzer : Node2D
         {
             if (thresholdBass < data[i].AsDouble())
             {
-                countBass ++;
+                countBass++;
             }
         }
+
         for (int i = indexBass; i < indexMedium; i++)
         {
             if (thresholdMedium < data[i].AsDouble())
             {
-                countMedium ++;
+                countMedium++;
             }
         }
+
         for (int i = indexMedium; i < indexTreble; i++)
         {
             if (thresholdTreble < data[i].AsDouble())
             {
-                countTreble ++;
+                countTreble++;
             }
         }
-
-
+        
+        EmitSignal(nameof(AnalyzerSignal), countBass,countMedium,countTreble);
         // GD.Print("Bass : " + countBass + " Sur :"+ _vuCountBass);
         // GD.Print("Medium : " + countMedium + " Sur :"+ _vuCountMedium);
         // GD.Print("Treble : " + countTreble + " Sur :"+ _vuCountTreble);
@@ -158,6 +167,7 @@ public partial class Analyzer : Node2D
         {
             value += data[i].AsInt16();
         }
-        return value/data.Count;
+
+        return value / data.Count;
     }
 }

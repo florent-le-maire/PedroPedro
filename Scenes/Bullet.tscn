@@ -9,8 +9,9 @@ radius = 3.5677
 height = 15.609
 
 [node name="Bullet" type="Area2D" node_paths=PackedStringArray("_petal1", "_petal2")]
-collision_layer = 3
+collision_layer = 0
 collision_mask = 3
+monitorable = false
 script = ExtResource("1_mil2h")
 _petal1 = NodePath("Sprite2D1")
 _petal2 = NodePath("Sprite2D2")

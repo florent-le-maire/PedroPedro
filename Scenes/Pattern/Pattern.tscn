@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://4x6j78uoougm" path="res://Scenes/Pattern/Attacks/Rotator.tscn" id="3_tqr0y"]
 
 [node name="Pattern" type="Node2D"]
-position = Vector2(0, -1)
+position = Vector2(273, 110)
 script = ExtResource("1_lbio0")
 _rotator = ExtResource("3_tqr0y")
 _spawner = ExtResource("2_g0sj8")
